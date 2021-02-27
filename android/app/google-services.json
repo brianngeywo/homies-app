@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "22456000337",
+    "project_id": "homie-app-15b0f",
+    "storage_bucket": "homie-app-15b0f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22456000337:android:2e3762a197da26f1f03d70",
+        "android_client_info": {
+          "package_name": "com.example.homie_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "22456000337-u24flvptvj8sre55dh1j15icjraqmet6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.homie_app",
+            "certificate_hash": "33b2a6d65675a8de7e837810a7489db586aff374"
+          }
+        },
+        {
+          "client_id": "22456000337-kmo0aa1s5dk180f470omjve87k9e0789.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxQQv5NCAQC-MY3Cs-XVx9kjvp7_M9zJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "22456000337-kmo0aa1s5dk180f470omjve87k9e0789.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
