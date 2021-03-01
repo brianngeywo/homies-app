@@ -17,7 +17,8 @@ class Profile extends StatefulWidget {
   _ProfileState createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile> with AutomaticKeepAliveClientMixin<Profile>{
+class _ProfileState extends State<Profile>
+    with AutomaticKeepAliveClientMixin<Profile> {
   String postOrientation = "list";
   bool isLoading = false;
   int postCount = 0;
@@ -83,8 +84,16 @@ class _ProfileState extends State<Profile> with AutomaticKeepAliveClientMixin<Pr
       );
     } else {
       if (postOrientation == "list") {
-        return Column(
-          children: posts,
+        return Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+              ),
+              color: Colors.white),
+          child: Column(
+            children: posts,
+          ),
         );
       }
       // else if (postOrientation == "grid") {
@@ -124,34 +133,59 @@ class _ProfileState extends State<Profile> with AutomaticKeepAliveClientMixin<Pr
 
   Container buildButton({String text, Function function}) {
     return Container(
-        padding: EdgeInsets.only(top: 2),
-        child: ElevatedButton(
-          onPressed: function,
+      child: GestureDetector(
+        onTap: function,
+        child: Card(
+          color: Colors.blueAccent[200],
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
           child: Container(
+            height: 45,
             alignment: Alignment.center,
-            decoration: BoxDecoration(
-                // color: Colors.blue,
-                ),
             child: Text(
               text,
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 2,
+                wordSpacing: 5,
+              ),
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   buildCountColumn(String label, int count) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
       children: [
         Container(
-          child: Text(label, 
-          style: TextStyle(fontSize: 20)),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2,
+              wordSpacing: 4,
+              
+            ),
+          ),
         ),
         SizedBox(width: 10),
         Text(
           count.toString(),
-          style: TextStyle(fontSize: 20)
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ],
     );
@@ -166,53 +200,82 @@ class _ProfileState extends State<Profile> with AutomaticKeepAliveClientMixin<Pr
           }
           User user = User.fromDocument(snapshot.data);
 
-          print(user.displayName);
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.grey,
-                      backgroundImage: NetworkImage(user.photoUrl),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        margin: EdgeInsets.only(left: 16),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    user.displayName,
-                                    style: TextStyle(fontSize: 22)
-                                  ),
-                                  // Text(user.bio),
-                                ],
+          return Container(
+            color: Colors.blueGrey[900].withBlue(110),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.grey,
+                    backgroundImage: NetworkImage(user.photoUrl),
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    user.displayName,
+                    style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  SizedBox(height: 15),
+
+                  Center(
+                    child: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              CircleAvatar(
+                                radius: 15,
+                                backgroundColor: Colors.blueAccent,
+                                child: Icon(
+                                  Icons.phone,
+                                  size: 20,
+                                ),
                               ),
-                            
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // buildCountColumn("Rentals:", postCount),
-                                buildProfileButton(),
-                              ],
-                            ),
-                          ],
-                        ),
+                              SizedBox(width: 10),
+                              Text("0798767470",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.white70,
+                                      fontWeight: FontWeight.bold))
+                            ],
+                          ),
+                          SizedBox(height: 10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              CircleAvatar(
+                                radius: 15,
+                                backgroundColor: Colors.blueAccent,
+                                child: Icon(
+                                  Icons.mail,
+                                  size: 20,
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              Text(user.email,
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.white70,
+                                      fontWeight: FontWeight.bold))
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                  SizedBox(height: 15),
+
+                  // buildCountColumn("Rentals:", postCount),
+                  buildProfileButton(),
+                ],
+              ),
             ),
           );
         });
@@ -256,14 +319,12 @@ class _ProfileState extends State<Profile> with AutomaticKeepAliveClientMixin<Pr
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-      appBar: profileHeader(context, titleText: "Profile"),
+      appBar: profileHeader(context, isAppTitle: true),
+      backgroundColor: Colors.blueGrey[900].withBlue(110),
       body: ListView(
         children: [
           buildProfileHeader(),
-          Divider(),
-          // buildTogglePostsOrientation(),
-          // Divider(height: 0),
-          buildProfilePosts()
+          buildProfilePosts(),
         ],
       ),
     );

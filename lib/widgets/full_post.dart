@@ -164,6 +164,34 @@ class _FullPostState extends State<FullPost> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
+                  "type:",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "appartment",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 16.0),
+          child: Container(
+            margin: EdgeInsets.only(left: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
                   "Bedrooms:",
                   style: TextStyle(
                     color: Colors.black,
@@ -346,24 +374,6 @@ class _FullPostState extends State<FullPost> {
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 18,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 16.0),
-          child: Container(
-            margin: EdgeInsets.only(left: 5),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  '"Please dont send any money before confirming with the appartment or agent, it is adviced to visit a place before deciding to make farther actions"',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 22,
                   ),
                 ),
               ],

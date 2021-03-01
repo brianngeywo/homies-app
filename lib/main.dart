@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           accentColor: Colors.teal,
           primaryColor: Colors.teal[700],
-          primarySwatch: Colors.teal,
+          // primarySwatch: Colors.teal,
         ),
         debugShowCheckedModeBanner: false,
         home: Home(),);

@@ -166,9 +166,19 @@ class _PostState extends State<Post> {
               margin: EdgeInsets.symmetric(vertical: 4),
               child: Text(
                 "Kshs $rent/month",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              child: Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+              color: Colors.blueAccent,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8),
+                  child: Text(
+                    "Apartment",
+                    style: TextStyle(color: Colors.white,),
+                  ),
                 ),
               ),
             ),
@@ -196,7 +206,6 @@ class _PostState extends State<Post> {
                             fontSize: 20,
                           ),
                         ),
-                        
                       ],
                     ),
                   ),
@@ -204,7 +213,6 @@ class _PostState extends State<Post> {
                     margin: EdgeInsets.only(right: 15),
                     child: Row(
                       children: [
-                        
                         Icon(
                           Icons.bathtub_sharp,
                           color: Colors.black,
@@ -238,7 +246,6 @@ class _PostState extends State<Post> {
                             fontSize: 20,
                           ),
                         ),
-                        
                       ],
                     ),
                   ),
@@ -276,7 +283,7 @@ class _PostState extends State<Post> {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
       child: Card(
-        elevation: 6,
+        elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Column(
           mainAxisSize: MainAxisSize.min,

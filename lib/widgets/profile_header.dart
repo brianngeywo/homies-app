@@ -10,19 +10,22 @@ AppBar profileHeader(context,
   return AppBar(
     automaticallyImplyLeading: removeBackButton ? false : true,
     title: Text(
-      isAppTitle ? "flutter share" : titleText,
+      isAppTitle ? "" : titleText,
       style: TextStyle(
         color: Colors.white,
         fontSize: isAppTitle ? 50 : 20,
       ),
       overflow: TextOverflow.ellipsis,
     ),
-    backgroundColor: Theme.of(context).primaryColor,
+    backgroundColor: Colors.blueGrey[900].withBlue(110),
+    elevation: 0,
     // centerTitle: true,
     actions: [
       Container(
-        color: Colors.blue,
         child: ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.blueAccent[700].withOpacity(0.7)),
+          ),
           onPressed: logout,
           child: Text("Log Out"),
         ),

@@ -100,7 +100,7 @@ class _UploadState extends State<Upload>
             child: ElevatedButton(
               onPressed: () => selectImage(context),
               child: Text(
-                "upload rental list",
+                "upload rental listing",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,

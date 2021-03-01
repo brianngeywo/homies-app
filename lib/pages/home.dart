@@ -129,12 +129,13 @@ class _HomeState extends State<Home> {
         ],
         controller: pageController,
         onPageChanged: onPageChanged,
-        physics: NeverScrollableScrollPhysics(),
+        // physics: NeverScrollableScrollPhysics(),
       ),
       bottomNavigationBar: CupertinoTabBar(
         currentIndex: pageIndex,
         onTap: onTabBarTap,
-        activeColor: Theme.of(context).primaryColor,
+        activeColor: Colors.blueAccent[700].withOpacity(0.7),
+        inactiveColor: Colors.black,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.whatshot),
@@ -144,7 +145,7 @@ class _HomeState extends State<Home> {
           // ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.photo_camera,
+              Icons.add,
               size: 35,
             ),
           ),

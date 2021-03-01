@@ -109,6 +109,7 @@ class _EditProfileState extends State<EditProfile> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey[900].withBlue(110),
         title: Text(
           "Edit Profile",
         ),
@@ -149,9 +150,25 @@ class _EditProfileState extends State<EditProfile> {
                           ],
                         ),
                       ),
-                      ElevatedButton(
-                        onPressed: updateProfileData,
-                        child: Text("Update Profile"),
+                      GestureDetector(
+                        onTap: updateProfileData,
+                        child: Card(
+                          elevation: 10,
+                          child: Container(
+                            height: 50,
+                            width: 180,
+                            color: Colors.blueGrey[900].withBlue(110),
+                            child: Center(
+                              child: Text(
+                                "Update Profile",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:homie_app/models/User.dart';
+import 'package:homie_app/pages/search.dart';
 import 'package:homie_app/widgets/header.dart';
 import 'package:homie_app/pages/home.dart';
 import 'package:homie_app/widgets/post.dart';
@@ -14,7 +15,8 @@ class Timeline extends StatefulWidget {
   _TimelineState createState() => _TimelineState();
 }
 
-class _TimelineState extends State<Timeline> with AutomaticKeepAliveClientMixin<Timeline> {
+class _TimelineState extends State<Timeline>
+    with AutomaticKeepAliveClientMixin<Timeline> {
   List<Post> timelinePosts = [];
 
   @override
@@ -64,19 +66,68 @@ class _TimelineState extends State<Timeline> with AutomaticKeepAliveClientMixin<
         ),
       );
     } else {
-      return ListView(
-        children: timelinePosts,
+      return Stack(
+        children: [
+          Container(
+            color: Colors.white,
+            margin: EdgeInsets.only(top: 5),
+            child: ListView(
+              children: timelinePosts,
+            ),
+          ),
+          // Container(
+          //   height: 50,
+          //   margin: EdgeInsets.symmetric(
+          //               vertical: 8,
+          //             ),
+          //   child: ListView(
+          //     scrollDirection: Axis.horizontal,
+          //     children: [
+          //       Card(
+          //         elevation: 6,
+          //         shape: RoundedRectangleBorder(
+          //           borderRadius: BorderRadius.circular(20),
+          //         ),
+          //         child: Container(
+          //             margin: EdgeInsets.symmetric(
+          //               vertical: 8,
+          //               horizontal: 10,
+          //             ),
+          //             child: Center(child: Text("categories"))),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+        ],
       );
     }
   }
+
   bool get wantKeepAlive => true;
 
   @override
   Widget build(context) {
-
-   super.build(context);
+    super.build(context);
     return Scaffold(
-      appBar: header(context, isAppTitle: true),
+      appBar: AppBar(
+        actions: [
+          GestureDetector(
+            onTap: () => showProfile(context, profileId: currentUser.id),
+                      child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              child: CircleAvatar(
+                radius: 20,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Image.network(currentUser.photoUrl),
+                ),
+              ),
+            ),
+          ),
+        ],
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: RefreshIndicator(
         child: buildTimeline(),
         onRefresh: () => getTimeline(),
