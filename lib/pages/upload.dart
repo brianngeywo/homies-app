@@ -28,6 +28,8 @@ class _UploadState extends State<Upload>
   TextEditingController internetController = TextEditingController();
   TextEditingController rentController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  TextEditingController placeDescriptionController = TextEditingController();
+  TextEditingController locationDescriptionController = TextEditingController();
   var geoLocator = Geolocator();
   String fileUrl;
   String postId = Uuid().v4();
@@ -135,6 +137,8 @@ class _UploadState extends State<Upload>
       internet: internetController.text,
       rent: rentController.text,
       phone: phoneController.text,
+      locationDescription: locationDescriptionController.text,
+placeDescription:placeDescriptionController.text,
     );
     captionController.clear();
     locationController.clear();
@@ -144,6 +148,8 @@ class _UploadState extends State<Upload>
     internetController.clear();
     rentController.clear();
     phoneController.clear();
+    locationDescriptionController.clear();
+    placeDescriptionController.clear();
     setState(() {
       pickedFile = null;
       isUploading = false;
@@ -184,6 +190,8 @@ class _UploadState extends State<Upload>
     String internet,
     String rent,
     String phone,
+    String locationDescription,
+    String placeDescription,
   }) {
     postsRef
         .doc(widget.currentUser.id)
@@ -203,6 +211,8 @@ class _UploadState extends State<Upload>
       "internet": internet,
       "rent": rent,
       "phone": phone,
+      "place description": placeDescription,
+      "location description": locationDescription,
     });
   }
 
@@ -398,6 +408,25 @@ class _UploadState extends State<Upload>
             ),
           ),
           Divider(),
+          ListTile(
+            leading: Icon(
+              Icons.directions,
+              color: Colors.teal[700],
+              size: 35,
+            ),
+            title: Container(
+              width: 250,
+              child: TextField(
+                controller: locationDescriptionController,
+                decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  hintText: "direction e.g opposite naivas supermarket",
+                  // border: InputBorder.none,
+                ),
+              ),
+            ),
+          ),
+          Divider(),
           Container(
             padding: EdgeInsets.only(top: 10),
             color: Colors.grey[200],
@@ -421,6 +450,7 @@ class _UploadState extends State<Upload>
                     ),
                   ),
                 ),
+                Divider(),
                 Container(
                   width: 200,
                   height: 100,

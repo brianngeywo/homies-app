@@ -20,8 +20,11 @@ class Post extends StatefulWidget {
   final String internet;
   final String rent;
   final String phone;
-
+  final String placeDescription;
+  final String locationDescription;
   Post({
+    this.locationDescription,
+    this.placeDescription,
     this.postId,
     this.ownerId,
     this.mediaUrl,
@@ -49,6 +52,8 @@ class Post extends StatefulWidget {
       parking: postDocSnap['parking'],
       phone: postDocSnap['phone'],
       rent: postDocSnap['rent'],
+      locationDescription: postDocSnap['location description'],
+      placeDescription: postDocSnap['place description'],
     );
   }
   @override
@@ -65,10 +70,14 @@ class Post extends StatefulWidget {
         internet: this.internet,
         rent: this.rent,
         phone: this.phone,
+        locationDescription: this.locationDescription,
+        placeDescription: this.placeDescription,
       );
 }
 
 class _PostState extends State<Post> {
+  final String placeDescription;
+  final String locationDescription;
   final String postId;
   final String ownerId;
   final String mediaUrl;
@@ -82,6 +91,8 @@ class _PostState extends State<Post> {
   final String rent;
   final String phone;
   _PostState({
+    this.locationDescription,
+    this.placeDescription,
     this.postId,
     this.ownerId,
     this.mediaUrl,
@@ -128,7 +139,7 @@ class _PostState extends State<Post> {
           constraints: BoxConstraints(maxHeight: 180),
           child: Image.network(
             mediaUrl,
-            fit: BoxFit.fitHeight,
+            fit: BoxFit.cover,
           ),
         ),
       ),
@@ -171,13 +182,17 @@ class _PostState extends State<Post> {
             ),
             Container(
               child: Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-              color: Colors.blueAccent,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                color: Colors.blueAccent,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8),
                   child: Text(
                     "Apartment",
-                    style: TextStyle(color: Colors.white,),
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
@@ -281,7 +296,10 @@ class _PostState extends State<Post> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
+      margin: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 10,
+      ),
       child: Card(
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),

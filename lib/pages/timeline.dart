@@ -69,7 +69,7 @@ class _TimelineState extends State<Timeline>
       return Stack(
         children: [
           Container(
-            color: Colors.white,
+            color: Colors.grey[200],
             margin: EdgeInsets.only(top: 5),
             child: ListView(
               children: timelinePosts,

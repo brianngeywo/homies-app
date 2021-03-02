@@ -239,7 +239,7 @@ class _ProfileState extends State<Profile>
                                 ),
                               ),
                               SizedBox(width: 10),
-                              Text("0798767470",
+                              Text(user.phoneNumber ?? "add phone number",
                                   style: TextStyle(
                                       fontSize: 20,
                                       color: Colors.white70,

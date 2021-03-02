@@ -7,7 +7,9 @@ class User {
   final String username;
   final String bio;
   final String displayName;
+  final String phoneNumber;
   User({
+    this.phoneNumber,
     this.bio,
     this.email,
     this.id,
@@ -23,6 +25,7 @@ class User {
       bio: userDocSnap['bio'],
       photoUrl: userDocSnap['photoUrl'],
       displayName: userDocSnap['display name'],
+      phoneNumber: userDocSnap['phone number'],
     );
   }
 }

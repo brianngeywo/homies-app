@@ -17,8 +17,11 @@ class FullPost extends StatefulWidget {
   final String internet;
   final String rent;
   final String phone;
-
+  final String placeDescription;
+  final String locationDescription;
   FullPost({
+    this.locationDescription,
+    this.placeDescription,
     this.postId,
     this.ownerId,
     this.mediaUrl,
@@ -46,6 +49,8 @@ class FullPost extends StatefulWidget {
       parking: postDocSnap['parking'],
       phone: postDocSnap['phone'],
       rent: postDocSnap['rent'],
+      locationDescription: postDocSnap['location description'],
+      placeDescription: postDocSnap['place description'],
     );
   }
   @override
@@ -62,6 +67,8 @@ class FullPost extends StatefulWidget {
         internet: this.internet,
         rent: this.rent,
         phone: this.phone,
+        locationDescription: this.locationDescription,
+        placeDescription: this.placeDescription,
       );
 }
 
@@ -78,7 +85,11 @@ class _FullPostState extends State<FullPost> {
   final String internet;
   final String rent;
   final String phone;
+  final String placeDescription;
+  final String locationDescription;
   _FullPostState({
+    this.locationDescription,
+    this.placeDescription,
     this.postId,
     this.ownerId,
     this.mediaUrl,

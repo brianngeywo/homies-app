@@ -14,6 +14,7 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
   TextEditingController displayNameController = TextEditingController();
   TextEditingController bioController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   User user;
   bool isLoading = false;
   bool _displayNameValid = true;
@@ -27,6 +28,7 @@ class _EditProfileState extends State<EditProfile> {
     user = User.fromDocument(userDocSnap);
     displayNameController.text = user.displayName;
     bioController.text = user.bio;
+    phoneController.text = user.phoneNumber;
     setState(() {
       isLoading = false;
     });
@@ -86,6 +88,28 @@ class _EditProfileState extends State<EditProfile> {
       ],
     );
   }
+ Column buildphoneField() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 16.0),
+          child: Text(
+            user.phoneNumber,
+            style: TextStyle(
+              color: Colors.grey,
+            ),
+          ),
+        ),
+        TextField(
+          controller: phoneController,
+          decoration: InputDecoration(
+            hintText: "update phone number",
+          ),
+        )
+      ],
+    );
+  }
 
   updateProfileData() {
     setState(() {
@@ -98,6 +122,7 @@ class _EditProfileState extends State<EditProfile> {
       usersRef.doc(widget.currentUserId).update({
         "bio": bioController.text,
         "display name": displayNameController.text,
+        "phone number": phoneController.text,
       });
       SnackBar snackBar = SnackBar(content: Text("profile updated!!"));
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -147,6 +172,7 @@ class _EditProfileState extends State<EditProfile> {
                           children: [
                             buildDiasplayNameField(),
                             buildbioField(),
+                            buildphoneField(),
                           ],
                         ),
                       ),
